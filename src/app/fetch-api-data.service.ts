@@ -14,6 +14,8 @@ const apiUrl = 'https://movies-flix-2-2c5b748a56db.herokuapp.com/';
 export class FetchApiDataService { 
   constructor(private http: HttpClient) {
   }
+
+  // User registration endpoint
   
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
@@ -22,11 +24,15 @@ export class FetchApiDataService {
     );
   }
 
+  // User login endpoint
+
   public userLogin(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'login?' + new URLSearchParams(userDetails), {}).pipe(
       catchError(this.handleError)
     );
   }
+
+  // Get all movies endpoint
 
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
@@ -38,6 +44,8 @@ export class FetchApiDataService {
       catchError(this.handleError)
     );
   }
+
+  // Get one movie endpoint
 
   getOneMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
@@ -51,6 +59,8 @@ export class FetchApiDataService {
     );
   }
 
+  // Get director endpoint
+
   getOneDirector(directorName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/director/' + directorName, {
@@ -63,10 +73,28 @@ export class FetchApiDataService {
     );
   }
 
+  // Get genre endpoint
+
+  getOneGenre(genreName: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'movies/genre/' + genreName, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
+// Get user endpoint
+
   getOneUser(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user;
   }
+
+  // Get favourite movies for a user endpoint
 
   getFavoriteMovies(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -82,6 +110,8 @@ export class FetchApiDataService {
       catchError(this.handleError)
     );
   }
+
+  // Add a movie to favourite Movies endpoint
 
   addFavoriteMovies(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -100,10 +130,14 @@ export class FetchApiDataService {
     );
   }
 
+  // endpoint
+
   isFavoriteMovie(movieId: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.FavoriteMovies.indexOf(movieId) >= 0;
   }
+
+  // Edit user endpoint
 
   editUser(updatedUser: any): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -119,6 +153,8 @@ export class FetchApiDataService {
     );
   }
 
+  // Delete user endpoint
+
   deleteUser(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
@@ -131,6 +167,8 @@ export class FetchApiDataService {
       catchError(this.handleError)
     );
   }
+
+// Delete a movie from the favorite movies endpoint
 
   deleteFavoriteMovie(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
