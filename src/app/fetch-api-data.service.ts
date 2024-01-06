@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpHeaders,
+  HttpErrorResponse,
+  HttpClient,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -27,9 +31,10 @@ export class FetchApiDataService {
   // User login endpoint
 
   public userLogin(userDetails: any): Observable<any> {
-    return this.http.post(apiUrl + 'login?' + new URLSearchParams(userDetails), {}).pipe(
-      catchError(this.handleError)
-    );
+    console.log(userDetails);
+    return this.http
+      .post(apiUrl + '/login?' + new URLSearchParams(userDetails), {})
+      .pipe(catchError(this.handleError));
   }
 
   // Get all movies endpoint
@@ -195,21 +200,17 @@ export class FetchApiDataService {
 // Non-typed response extraction
 private extractResponseData(res: any): any {
   const body = res;
-  return body || {};
+  return body || { };
 }
 
-  private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
-    }
-    else if (error.error.errors) {
-      return throwError(() => new Error(error.error.errors[0].msg));
-    }
-    else {
-      console.error(
-        `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`);
-    }
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+private handleError(error: HttpErrorResponse): any {
+  if (error.error instanceof ErrorEvent) {
+  console.error('Some error occurred:', error.error.message);
+  } else {
+  console.error(
+      `Error Status code ${error.status}, ` +
+      `Error body is: ${error.error}`);
   }
+  return throwError(() => new Error('Something bad happened; please try again later.'));
+}
 }

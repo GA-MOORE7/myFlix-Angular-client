@@ -1,0 +1,22 @@
+// .signup-page{
+//     width: 800px;
+// }
+mat-card-title{
+    font-size: 22px;
+    font-weight: 500;
+    margin: 5px 80px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    width: 100%;
+}
+.signup-btn{
+    margin: 10px auto;
+    padding: 1.5rem;
+    font-size: 18px;
+    background-color: #9a1d1d!important;
+    color: #e8f7ee!important; 
+    width: 90%;
+}
