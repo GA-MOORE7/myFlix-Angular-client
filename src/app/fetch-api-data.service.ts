@@ -30,11 +30,11 @@ export class FetchApiDataService {
 
   // User login endpoint
 
-  public userLogin(userDetails: any): Observable<any> {
+  public userLogin(userDetails: any): Observable<any>{
     console.log(userDetails);
-    return this.http
-      .post(apiUrl + '/login?' + new URLSearchParams(userDetails), {})
-      .pipe(catchError(this.handleError));
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
+      catchError(this.handleError)
+    );
   }
 
   // Get all movies endpoint
