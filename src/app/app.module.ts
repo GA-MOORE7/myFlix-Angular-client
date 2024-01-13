@@ -10,20 +10,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MatIconModule } from '@angular/material/icon';
+import { DialogModule } from '@angular/cdk/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 
-import { AppRoutingModule } from './app-routing.module';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { AppComponent } from './app.component';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ProfileComponent } from './profile-page/profile-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileComponent},
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -33,12 +38,16 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    ProfileComponent,
+    NavbarComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    DialogModule,
     FormsModule,
     // AppComponent,
     MatIconModule,
@@ -49,7 +58,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    RouterModule.forRoot(appRoutes)
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [

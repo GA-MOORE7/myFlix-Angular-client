@@ -1,5 +1,5 @@
 // src/app/user-registration-form/user-registration-form.component.ts
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 // You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
@@ -10,6 +10,10 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { ProfileComponent } from '../profile-page/profile-page.component';
+
 
 @Component({
   selector: 'app-user-registration-form',
@@ -18,15 +22,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { Username: '', Password: '', Email: '', Birth: '' };
+
+  token : any = localStorage.getItem('token');
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, button: string, function: string},
   ) {}
 
 ngOnInit(): void {
+  if( this.token !== null ){
+    this.userData = JSON.parse(localStorage.getItem('user') || '');
+    this.userData.Password = '';
+    console.log(this.userData);
+  }
+  
 }
 
 // This is the function responsible for sending the form inputs to the backend

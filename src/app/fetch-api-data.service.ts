@@ -5,7 +5,7 @@ import {
   HttpErrorResponse,
   HttpClient,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
@@ -16,6 +16,13 @@ const apiUrl = 'https://movies-flix-2-2c5b748a56db.herokuapp.com/';
 
 
 export class FetchApiDataService { 
+
+  private userData = new BehaviorSubject<Object>({ Username: '', Password: '', Email: '', Birth: ''});
+  currentUser = this.userData.asObservable();
+
+  private movies = new BehaviorSubject<Object>({});
+  moviesList = this.movies.asObservable();
+
   constructor(private http: HttpClient) {
   }
 
