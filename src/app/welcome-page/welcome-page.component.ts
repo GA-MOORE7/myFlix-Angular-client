@@ -9,17 +9,23 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
+
   constructor(public dialog: MatDialog) { }
+
   ngOnInit(): void {
   }
-  openUserRegistrationDialog(): void {
-    this.dialog.open(UserRegistrationFormComponent, {
-      width: '280px'
-    });
-  }
-openUserLoginDialog(): void {
+
+public openUserRegistrationDialog() : void {
+    localStorage.clear();
+    console.log(localStorage.getItem('token'));
+    this.dialog.open(UserRegistrationFormComponent, { width: '400px', data: {title: 'REGISTER', button: 'Signup', function: 'registerUser()'}});
+   }
+
+public openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '280px'
     });
+    
   }
+
 }

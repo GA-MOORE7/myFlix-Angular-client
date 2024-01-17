@@ -87,13 +87,13 @@ export class FetchApiDataService {
 
   // Get genre endpoint
 
-  getOneGenre(genreName: string): Observable<any> {
+  public getGenre(genreName: string) : Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'movies/genre/' + genreName, {
-      headers: new HttpHeaders({
+    return this.http.get(apiUrl + '/movies/genreName/' + genreName, {headers: new HttpHeaders(
+      {
         Authorization: 'Bearer ' + token,
-      })
-    }).pipe(
+      }
+    )}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -101,10 +101,18 @@ export class FetchApiDataService {
 
 // Get user endpoint
 
-  getOneUser(): Observable<any> {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user;
-  }
+public getUsers() : Observable<any> {
+  return this.http.get(apiUrl + '/users').pipe(map(this.extractResponseData), catchError(this.handleError));
+}
+
+public getOneUser() {
+  let user = JSON.parse(localStorage.getItem('user') || '');
+  this.getUsers().subscribe((response) => {
+    user = response.filter((item: any) => item.Username == user.Username);
+  })
+  this.userData.next(user);
+  return user;
+}
 
   // Get favourite movies for a user endpoint
 
@@ -151,7 +159,7 @@ export class FetchApiDataService {
 
   // Edit user endpoint
 
-  editUser(updatedUser: any): Observable<any> {
+  updateUser(updatedUser: any): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
     return this.http.put(apiUrl + 'users/' + user.Username, updatedUser, {
@@ -170,12 +178,14 @@ export class FetchApiDataService {
   deleteUser(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + user._id, {
+    console.log(token);
+    return this.http.delete(apiUrl + 'users/' + user.Username, {
       headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })
     }).pipe(
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }

@@ -12,8 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { ProfileComponent } from '../profile-page/profile-page.component';
-
 
 @Component({
   selector: 'app-user-registration-form',
@@ -22,7 +20,7 @@ import { ProfileComponent } from '../profile-page/profile-page.component';
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  @Input() userData = { Username: '', Password: '', Email: '', Birth: '' };
+  @Input() userData : any= { Username: '', Password: '', Email: '', Birth: '' };
 
   token : any = localStorage.getItem('token');
 
@@ -58,5 +56,21 @@ registerUser(): void {
       });
     });
   }
+
+  updateUser(): void {
+    this.fetchApiData.updateUser(this.userData).subscribe((response) => {
+      console.log(response);
+     localStorage.setItem('user', JSON.stringify(response));
+     this.dialogRef.close();
+     this.snackBar.open('User updated successfully!!', 'OK', {duration: 2000});
+     this.userData = JSON.parse(localStorage.getItem('user') || '');
+     this.userData.Password = '';
+     console.log(this.userData);
+    }, (response) => {
+     console.log(response);
+     this.snackBar.open(response, 'OK', {  duration: 2000});
+    });
+ }
+
 
   }

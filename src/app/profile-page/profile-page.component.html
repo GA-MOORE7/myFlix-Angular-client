@@ -7,7 +7,7 @@
        Birthday: {{user.Birth | date:'longDate'}}<br/>
 
     </mat-card-content>
-    <!-- <mat-card-actions>
+    <mat-card-actions>
         <button mat-raised-button (click)="back()" color="primary" style="margin: 20px;">
             Back
 
@@ -16,11 +16,10 @@
             Update User
 
         </button>
-        <button mat-raised-button (click)="deregisterUser()" color="primary" style="margin: 20px;">
-            Deregister User
-
+        <button class="delete-icon" mat-fab color="warn" (click)="deleteUser()">
+            <mat-icon>delete</mat-icon>
         </button>
-    </mat-card-actions> -->
+    </mat-card-actions>
 </mat-card>
 <!-- <h1>Favourite Movies List</h1>
 <div class="movie-list">
