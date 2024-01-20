@@ -133,12 +133,12 @@ public getOneUser() {
 
   // Add a movie to favourite Movies endpoint
 
-  addFavoriteMovies(movieId: string): Observable<any> {
+  addFavoriteMovies(movieID: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    user.FavoriteMovies.push(movieId);
+    user.FavoriteMovies.push(movieID);
     localStorage.setItem('user', JSON.stringify(user));
-    return this.http.post(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {}, {
+    return this.http.post(apiUrl + 'users/' + user.Username + '/movies/' + movieID, {}, {
       headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
@@ -152,9 +152,9 @@ public getOneUser() {
 
   // endpoint
 
-  isFavoriteMovie(movieId: string): boolean {
+  isFavoriteMovie(movieID: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.indexOf(movieId) >= 0;
+    return user.FavoriteMovies.indexOf(movieID) >= 0;
   }
 
   // Edit user endpoint
@@ -192,17 +192,17 @@ public getOneUser() {
 
 // Delete a movie from the favorite movies endpoint
 
-  deleteFavoriteMovie(movieId: string): Observable<any> {
+  deleteFavoriteMovie(movieID: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
 
-    const index = user.FavoriteMovies.indexOf(movieId);
+    const index = user.FavoriteMovies.indexOf(movieID);
     console.log(index);
     if (index > -1) { // only splice array when item is found
       user.FavoriteMovies.splice(index, 1); // 2nd parameter means remove one item only
     }
     localStorage.setItem('user', JSON.stringify(user));
-    return this.http.delete(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {
+    return this.http.delete(apiUrl + 'users/' + user.Username + '/movies/' + movieID, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

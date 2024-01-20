@@ -1,7 +1,20 @@
 .profile{
+    // max-width: 600px;
+    // max-height: 600px;
+    margin: 60px auto;
+    text-align: center;
+    border: 1px solid rgb(230, 218, 218);
+}
+
+// .favMoviesList {
+//     position: middle;
+    
+// }
+
+mat-card-actions {
     max-width: 600px;
     max-height: 600px;
     margin: 60px auto;
     text-align: center;
-    border: 1px solid rgb(230, 218, 218);
+    // border: 1px solid rgb(230, 218, 218);
 }

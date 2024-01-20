@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogModule } from '@angular/cdk/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSnackBarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [
