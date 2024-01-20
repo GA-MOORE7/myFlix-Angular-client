@@ -63,9 +63,6 @@ registerUser(): void {
      localStorage.setItem('user', JSON.stringify(response));
      this.dialogRef.close();
      this.snackBar.open('User updated successfully!!', 'OK', {duration: 2000});
-    //  this.userData = JSON.parse(localStorage.getItem('user') || '');
-    //  this.userData.Password = '';
-    //  console.log(this.userData);
     }, (response) => {
      console.log(response);
      this.snackBar.open(response, 'OK', {  duration: 2000});
