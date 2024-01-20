@@ -16,9 +16,9 @@ export class NavbarComponent implements OnInit {
    /**
    * navbar element to navigate home page
    */
-  // public openMovieList(): void{
-  //   this.router.navigate(['movies']);
-  // }
+  public openMovieList(): void{
+    this.router.navigate(['movies']);
+  }
   /**
    * navbar element to navigate profile page
    */
@@ -28,11 +28,11 @@ export class NavbarComponent implements OnInit {
   /**
    * navbar element to logout the current user and navigate to welcome page
    */
-  // public logoutUser(): void {
-  //   localStorage.setItem('token', '');
-  //   localStorage.setItem('user', '');
-  //   this.router.navigate(['welcome']);
-  // }
+  public logoutUser(): void {
+    localStorage.setItem('token', '');
+    localStorage.setItem('user', '');
+    this.router.navigate(['welcome']);
+  }
 
 
 }

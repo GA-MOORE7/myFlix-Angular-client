@@ -1,11 +1,16 @@
 <!-- src/app/movie-card/movie-card.component.html -->
+<div class="movie-page">
 <app-navbar></app-navbar>
-<div style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+<div class="movie-view">
+    <mat-card *ngFor="let movie of movies;" class="movie-card">
+        <mat-toolbar-row>
         <mat-card-header>
         <mat-card-title>{{movie.Title}}</mat-card-title>
+        <span class="spacer"></span> 
+        
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
         </mat-card-header>
+        </mat-toolbar-row>
         <img src={{movie.ImagePath}} alt= {{movie.Title}} />
         <mat-card-actions>
             <button
@@ -37,4 +42,5 @@
             </button>
         </mat-card-actions>
     </mat-card>
+</div>
 </div>
