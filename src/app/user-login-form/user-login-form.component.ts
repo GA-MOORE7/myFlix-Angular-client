@@ -32,34 +32,24 @@ export class UserLoginFormComponent implements OnInit {
    *  This is the function responsible for sending the form inputs to the backend
    */
   loginUser(): void {
-    console.log('Login');
-    this.fetchApiData
-      .userLogin(this.userData.Username, 
-        // this.userData.Password
-        )
-      .subscribe(
-        (result) => {
-          console.log('result:', JSON.stringify(result));
-          //TEST, STILL NEEDS CONFIRMATION THAT OT WORKS
-          localStorage.setItem('user', JSON.stringify(result.user));
-          localStorage.setItem('token', result.token);
-
-          // console.log(result.user.username);
-          // console.log(result.token);
-          // Logic for a successful user registration goes here! (To be implemented)
-          this.dialogRef.close(); // This will close the modal on success!
-          //test logging users info
-          this.snackBar.open('user logged in', 'OK', {
-            duration: 2000,
-          });
-
-          this.router.navigate(['movies']);
-        },
-        (result) => {
-          this.snackBar.open(result, 'OK', {
-            duration: 2000,
-          });
-        }
-      );
+    this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+      // Logic for a successful user login goes here! (To be implemented)
+      console.log(result);
+      localStorage.setItem('user', JSON.stringify(result.user));
+      localStorage.setItem('token', result.token);
+      this.dialogRef.close(); // This will close the modal on success!
+      console.log(result);
+      this.snackBar.open('Logged in', 'OK', {
+        duration: 2000
+      });
+      // Successfully login done
+      
+      this.router.navigate(['movies']);
+    }, (result) => {
+      this.snackBar.open('Login failed', 'OK', {
+        duration: 2000
+      });
+    });
   }
+
 }

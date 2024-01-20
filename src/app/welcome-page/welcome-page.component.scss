@@ -1,0 +1,25 @@
+.movie-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(180deg, rgb(84, 228, 238), rgb(252, 252, 252))
+}
+h1{
+    font-size: 37px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    // justify-content: 100px;
+    
+}
+.btn{
+        margin: 0 0.9rem;
+        padding: 1.3rem;
+        background-color:rgb(159, 26, 48)!important;
+        color: #e8f7ee!important; 
+        font-size: 18px;
+}
