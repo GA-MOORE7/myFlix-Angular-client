@@ -22,6 +22,7 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProfileComponent } from './profile-page/profile-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { GenreComponent } from './genre/genre.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    GenreComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

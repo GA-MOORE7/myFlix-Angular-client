@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { GenreComponent } from '../genre/genre.component';
 
 @Component({
   selector: 'app-profile',
@@ -120,6 +120,10 @@ export class ProfileComponent implements OnInit {
           duration: 2000
         })
       });
+    }
+
+    public getGenre(genre: any){
+      this.dialog.open(GenreComponent, { width: '400px', height: '300px', data: {genre: genre}});
     }
   
   }

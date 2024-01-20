@@ -4,6 +4,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GenreComponent } from '../genre/genre.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -79,6 +80,10 @@ getAllMovies(): void {
         duration: 2000
       })
     });
+  }
+
+  public getGenre(genre: any){
+    this.dialog.open(GenreComponent, { width: '400px', height: '300px', data: {genre: genre}});
   }
 
 }
