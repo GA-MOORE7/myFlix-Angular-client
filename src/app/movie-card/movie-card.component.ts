@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -90,5 +91,9 @@ getAllMovies(): void {
   public getOneDirector(director: any){
     this.dialog.open(DirectorComponent, { width: '400px', height: '300px', data: {director: director}});
   }  
+
+  public openMovieDetails(details: string){
+    this.dialog.open(MovieDetailsComponent, { width: '400px', height: '300px', data: {details: details}});
+  }
 
 }

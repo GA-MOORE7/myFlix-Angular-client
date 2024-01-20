@@ -24,6 +24,7 @@ import { ProfileComponent } from './profile-page/profile-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GenreComponent } from './genre/genre.component';
 import { DirectorComponent } from './director/director.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     NavbarComponent,
     GenreComponent,
-    DirectorComponent
+    DirectorComponent,
+    MovieDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

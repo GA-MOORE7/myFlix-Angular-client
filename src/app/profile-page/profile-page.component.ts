@@ -6,6 +6,7 @@ import { UserRegistrationFormComponent } from '../user-registration-form/user-re
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
 @Component({
   selector: 'app-profile',
@@ -130,6 +131,10 @@ export class ProfileComponent implements OnInit {
     public getOneDirector(director: any){
       this.dialog.open(DirectorComponent, { width: '400px', height: '300px', data: {director: director}});
     }  
+
+    public openMovieDetails(details: string){
+      this.dialog.open(MovieDetailsComponent, { width: '400px', height: '300px', data: {details: details}});
+    }
   
   }
   
