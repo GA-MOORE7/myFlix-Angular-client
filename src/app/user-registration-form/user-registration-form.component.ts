@@ -51,7 +51,7 @@ registerUser(): void {
      });
     }, (response) => {
       console.log(response)
-      this.snackBar.open('Username must contain a minimum of 5 characters. No alphanumeric characters are allowed.', 'OK', {
+      this.snackBar.open('Username must contain a minimum of 5 characters (letters and/or numbers) and may NOT have special characters (@, #, $, &, % etc.). You must include a password', 'OK', {
         duration: 2000
       });
     });
