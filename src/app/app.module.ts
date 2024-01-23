@@ -39,15 +39,34 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    /** @component AppComponent */
     AppComponent,
+
+    /** @component UserRegistrationFormComponent */
     UserRegistrationFormComponent,
+
+    /** @component UserLoginFormComponent */
     UserLoginFormComponent,
+
+    /** @component MovieCardComponent */
     MovieCardComponent,
+
+    /** @component WelcomePageComponent */
     WelcomePageComponent,
+
+    /** @component ProfileComponent */
     ProfileComponent,
+
+    /** @component NavbarComponent */
     NavbarComponent,
+
+    /** @component GenreComponent */
     GenreComponent,
+
+    /** @component DirectorComponent */
     DirectorComponent,
+
+    /** @component MovieDetailsComponent */
     MovieDetailsComponent
   ],
   imports: [
@@ -57,7 +76,6 @@ const appRoutes: Routes = [
     AppRoutingModule,
     DialogModule,
     FormsModule,
-    // AppComponent,
     MatIconModule,
     BrowserAnimationsModule,
     MatDialogModule,

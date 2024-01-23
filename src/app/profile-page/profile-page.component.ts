@@ -8,6 +8,13 @@ import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
+/**
+ * @description Component representing the navigation bar.
+ * @selector 'app-profile'
+ * @templateUrl './profile-page.component.html'
+ * @styleUrls ['./profile-page.component.scss']
+ */
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile-page.component.html',
@@ -37,9 +44,14 @@ export class ProfileComponent implements OnInit {
     this.getAllMovies();
   }
 
+  /**
+   * Username and token will be taken from localstorage to send a request to the api for the users information
+   * User profile page will then be able to display the users favorite movies list and their username, name, email, etc.
+   * @returns user's data
+   */
+
   public loadUser(): void {
     this.user = this.fetchApiData.getOneUser();
-
     this.fetchApiData.getAllMovies().subscribe((response) => {
       this.FavoriteMovies = response.filter((movie: any) => this.user.FavoriteMovies.includes(movie._id));
     });
@@ -58,6 +70,16 @@ export class ProfileComponent implements OnInit {
     this.fetchApiData.currentUser.subscribe(userData => this.user = userData);
   }
 
+  /**
+     * This method will delete the user's account
+     * @returns confirmation prompt
+     * @returns user's account deleted
+     * @returns user navigated to welcome page
+     * @returns user notified of success
+     * @returns user notified of error
+     * @returns user token and user details removed from local storage
+     */
+
   deleteUser(): void {
     if(confirm('Do you want to delete your account permanently?')) {
       this.router.navigate(['welcome']).then(() => {
@@ -72,6 +94,11 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+ /**
+   * @description retrieves all the movies
+   */
+  
+
   getAllMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
         this.movies = resp;
@@ -79,6 +106,10 @@ export class ProfileComponent implements OnInit {
         return this.movies;
       });
     }
+
+   /**
+   * @description gets a list of favorite movies
+   */
   
     getFavorites(): void {
       this.fetchApiData.getOneUser().subscribe(
@@ -100,6 +131,11 @@ export class ProfileComponent implements OnInit {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
       return user.FavoriteMovies.indexOf(movieID) >= 0;
     }
+
+  /**
+   * @description adds a movie to the users list of favorite movies
+   * @param id
+   */
   
     addToFavorites(id: string): void {
       if (this.isFavoriteMovie(id)) {
@@ -115,7 +151,12 @@ export class ProfileComponent implements OnInit {
         });
       }
     }
-  
+
+  /**
+   * @description removes a movie from the users list of favorite movies
+   * @param id
+   */
+
     removeFavoriteMovie(id: string): void {
       this.fetchApiData.deleteFavoriteMovie(id).subscribe(() => {
         this.snackBar.open('removed from favorites', 'OK', {
@@ -124,13 +165,28 @@ export class ProfileComponent implements OnInit {
       });
     }
 
+    /**
+   * @description displays movie genre and description
+   * @param genre
+   */
+
     public getGenre(genre: any){
       this.dialog.open(GenreComponent, { width: '400px', height: '300px', data: {genre: genre}});
     }
 
+    /**
+   * @description displays movie director and description
+   * @param director
+   */
+
     public getOneDirector(director: any){
       this.dialog.open(DirectorComponent, { width: '400px', height: '300px', data: {director: director}});
     }  
+
+    /**
+   * @description displays movie details and description
+   * @param details
+   */
 
     public openMovieDetails(details: string){
       this.dialog.open(MovieDetailsComponent, { width: '400px', height: '300px', data: {details: details}});
