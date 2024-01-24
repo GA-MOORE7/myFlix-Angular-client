@@ -1,27 +1,37 @@
-# MyFlixAngularClient
+# MyflixAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+#### Welcome to MovieApiAngularClient, a portfolio project sdisplaying my skills in building Angular applications. This project serves as a client for the Movie API, displaying movie data with a user-friendly interface using Angular Material.
 
-## Development server
+## Project running
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- #### Navigate to the project folder in the terminal
+- #### Run the following: ng -serve
+- #### In the browser open: http://localhost:4200/
 
-## Code scaffolding
+## Live app URL:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### https://ga-moore7.github.io/myFlix-Angular-client/welcome
 
-## Build
+## First time to use:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Click register, after successfully registered login with credentials
 
-## Running unit tests
+## Code explanations
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Run ng generate component component-name to generate a new component. You can also use ng generate directive|pipe|service|class|guard|interface|enum|module.
 
-## Running end-to-end tests
+## Main Views of the Application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- #### Profile View
+- #### Welcome View
+- #### Login View
+- #### Movies View
+- #### Signup View
 
-## Further help
+## Main Views of the Application
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- #### Angular
+- #### Node.js and npm
+- #### Angular Material for design
+- #### Codebase comments (Typedoc)
+- #### Hosted on GitHub Pages
